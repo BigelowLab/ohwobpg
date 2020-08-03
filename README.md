@@ -64,7 +64,7 @@ Any data you subsequently download using this package will automatically create 
 
 ## Downloading example
 
-Let's download 2018 daily CHLOR_A data at 9km resoltion just for the Guld of Maine region. First we build a series of URLs for the data using `obpg_build_url()`.  The function has a number of arguments, but we'll just focus on what we need and accept the default values for the others.  Complete documentation is available by typing at the console, `?obpg_build_url`.
+Let's download 2018 monthly CHLOR_A data at 9km resoltion just for the Gulf of Maine region. First we build a series of URLs for the data using `obpg_build_url()`.  The function has a number of arguments, but we'll just focus on what we need and accept the default values for the others.  Complete documentation is available by typing at the console, `?obpg_build_url`.
 
 ```
 library(ohwobpg)
@@ -116,4 +116,12 @@ db <- to_database(files) %>%
   write_database(path)
 ```
 
+Using the database to filter and then read in a subset records into a stack of images,
+
+Navigating a stack (just simple - there are plenty of online tutorials)
+Extracting from a stack (just simple - there are plenty of online tutorials)... a point, a patch of points, a polygon
+
+Plotting rasters (just simple - there are plenty of online tutorials)... base graphics, ggplot2 and leaflet (for HTML)
+
+Creating a derived stack (like CHLOR_A cumulative and adding to the database)
 
