@@ -64,6 +64,7 @@ Any data you subsequently download using this package will automatically create 
 
 ## Downloading example
 
+
 Let's download 2018 monthly CHLOR_A data at 9km resoltion just for the Gulf of Maine region. First we build a series of URLs for the data using `obpg_build_url()`.  The function has a number of arguments, but we'll just focus on what we need and accept the default values for the others.  Complete documentation is available by typing at the console, `?obpg_build_url`.
 
 ```
