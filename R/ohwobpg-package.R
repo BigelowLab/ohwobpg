@@ -1,0 +1,9 @@
+#' ohwobpg - R tools for use with raster data originating from the [Ocean Biology Processing Group](https://oceancolor.gsfc.nasa.gov/).
+#'
+#'
+#' This package provides example tools to downloading, storing and displaying raster (grid) data from [Ocean Biology Processing Group](https://oceancolor.gsfc.nasa.gov/).  We use NASA's [THREDDS](https://www.unidata.ucar.edu/software/tds/current/) enabled data catalogs to download data using [OPeNDAP](https://www.opendap.org/) frameworks.
+#'
+#' @name ohwobpg
+#' @docType package
+#' @importFrom dplyr %>%
+NULL

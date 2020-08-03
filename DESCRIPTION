@@ -1,0 +1,21 @@
+Package: ohwobpg
+Title: ohwobpg for Ocean Biology Processing Group data
+Description: Tools for use with raster data originating from the Ocean Biology
+    Processing Group.
+Version: 0.1
+Encoding: UTF-8
+Depends:
+    R (>= 3.5)
+Imports:
+    raster,
+    ncdf4,
+    dplyr,
+    readr,
+    leaflet,
+    ggplot2,
+    crul
+Maintainer: Ben Tupper <btupper@bigelow.org>
+Author: Ben Tupper <btupper@bigelow.org>
+URL: https://github.com/btupper/ohwobpg
+License: MIT + file LICENSE
+RoxygenNote: 7.1.0
