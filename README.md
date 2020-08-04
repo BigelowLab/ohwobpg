@@ -227,7 +227,6 @@ par
 # max values : 27.505, 29.780, 30.230, 30.150 
 ```
 
-
 ## TODO
 
 Navigating a stack (just simple - there are plenty of online tutorials)
