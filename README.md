@@ -227,12 +227,17 @@ par
 # max values : 27.505, 29.780, 30.230, 30.150 
 ```
 
-## TODO
+## Drawing rasters
 
-Navigating a stack (just simple - there are plenty of online tutorials)
-Extracting from a stack (just simple - there are plenty of online tutorials)... a point, a patch of points, a polygon
+There are lots of ways to draw a raster.  We show three simple ones in a [brief tutorial](https://github.com/BigelowLab/ohwobpg/blob/master/inst/tutorials/plotting_rasters.Rmd).  
 
-Plotting rasters (just simple - there are plenty of online tutorials)... base graphics, ggplot2 and leaflet (for HTML)
+> **Note** If you [clone](https://github.com/git-guides/git-clone) the package to your lcoal computer you can easily view these tutorials from within an RStudio session.
 
-Creating a derived stack (like CHLOR_A cumulative and adding to the database)
+## Extracting data from a stack of rasters
+
+Extracting from a stack at a point, a patch of points, or a polygon is very staright forward. See this [tutorial for an example](https://github.com/BigelowLab/ohwobpg/blob/master/inst/tutorials/extracting_rasters.md).
+
+## Deriving new rasters - raster math!
+
+Creating a derived stack is easy with raster math - see this [page for an example](https://github.com/BigelowLab/ohwobpg/blob/master/inst/tutorials/deriving_rasters.md).
 
