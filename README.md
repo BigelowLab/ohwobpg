@@ -235,7 +235,7 @@ There are lots of ways to draw a raster.  We show three simple ones in a [brief 
 
 ## Extracting data from a stack of rasters
 
-Extracting from a stack at a point, a patch of points, or a polygon is very staright forward. See this [tutorial for an example](https://github.com/BigelowLab/ohwobpg/blob/master/inst/tutorials/extracting_rasters.md).
+Extracting from a stack at a point, a patch of points, or a polygon is very staright forward. See this [tutorial for an example](https://github.com/BigelowLab/ohwobpg/blob/master/inst/tutorials/extracting_rasters.Rmd).
 
 ## Deriving new rasters - raster math!
 
