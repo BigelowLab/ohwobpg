@@ -153,16 +153,16 @@ obpg_period_string <- function(dates, period = "DAY", style = "new"){
   per <- toupper(period[1])
   if (per != "DAY"){
     end <- switch(per,
-                  "8D" = dates + 8,
+                  "8D" = dates + 7,
                   "32R" = dates + 32,
-                  "MO" = sapply(seq_len(dates),
-                                function(d){
-                                  seq(from = d, length = 2, by = "month")[2] - 1
-                                }),
-                  "YR" = sapply(seq_len(dates),
-                                function(d){
-                                  seq(from = d, length = 2, by = "year")[2] - 1
-                                }),
+                  "MO" = as.Date(sapply(seq_along(dates),
+                                function(i){
+                                  seq(from = dates[i], length = 2, by = "month")[2] - 1
+                                }), origin = as.Date("1970-01-01")),
+                  "YR" = as.Date(sapply(seq_along(dates),
+                                        function(i){
+                                          seq(from = dates[i], length = 2, by = "year")[2] - 1
+                                        }), origin = as.Date("1970-01-01")),
                   stop("period not known: ", period)
     )
     if (tolower(style[1]) == "new"){

@@ -73,26 +73,26 @@ library(ohwobpg)
 # first we need a sequence of dates
 dates <- seq(
   from = as.Date("2018-01-01"), 
-  to = as.Date("2018-12-31"), 
-  by = "day")
+  to = as.Date("2018-12-01"), 
+  by = "month")
 
 urls <- obpg_build_url(
   dates = dates,
   param = "chlor_a",
   suite = "CHL",
-  period = "DAY",
+  period = "MO",
   res = "9km")
   
 # and define our bounding box [west, east, south, north]
-BB <- c(-77, -42.5, 36.5, 56.7)
+BB <- c(-72, -63, 39, 46)
 ```
 
-Now we'll open just the first NCDF resource.  From that we'll build a simple list of items we need to successfully navigate the remainder of the 364 URLs. Then we can close the NCDF resource.
+Now we'll open just the first NCDF resource.  From that we'll build a simple list of items we need to successfully navigate the remainder of the URLs. Then we can close the NCDF resource.
 
 ```
 nc1 <- obpg_open(urls[1])
 nav <- obpg_nc_nav(nc1,
-  bb = c(-77, -42.5, 36.5, 56.7),
+  bb = BB,
   res = obpg_res(what = "9km"),
   varname = "chlor_a")
 obpg_close(nc1)
@@ -102,22 +102,50 @@ Now we simply need to iterate through the dates - downloading the subset data an
 
 ```
 for (this_url in urls){
+  cat("fetching", basename(this_url), "\n")
   new_data <- obpg_fetch(this_url, nav, outpath = path)
 }
 ```
 
+> ### More Data
+> 
+> We have downloaded a daily dataset of sst and chlor_a for the Gulf of Maine which we will
+> work with later.  The script we used can be found [here]().
+
 ## Make a database
 
 It is easy to create a database by first creating a list of files, then parsing to the database format. 
-We'll use tidy-R style to manage the writing of the file.
 
 ```
 files <- list.files(path, pattern = glob2rx("*.tif"), full.names = TRUE)
-db <- to_database(files) %>%
-  write_database(path)
+db <- as_database(files)
+write_database(db, path)
+db
 ```
 
-Using the database to filter and then read in a subset records into a stack of images,
+The nrt column refers to "near real time" data. OBPG group first publishes it data flagged as "nrt".  Some time later (weeks? months?), after quality review and adjustments, the data is republished without the "nrt" flag. For this tutorial we'll ignore it, but one could use that to identify local files suitable for updating when OBPG updates. 
+
+
+The database can be easily filtered to select just the images needed; for this task we leverage the tools in the [dplyr](https://CRAN.R-project.org/package=dplyr) package.
+
+```
+library(dplyr, warn.conflicts = FALSE)
+sub_db <- db %>% 
+  dplyr::filter(param == "sst" & 
+                per == "MO" &
+                dplyr::between(date, as.Date("2018-05-15"), as.Date("2018-09-26")))
+```
+
+Using the filtered database we then read in a subset of records into a raster stack of images.
+
+```
+library(raster)
+files <- as_filename(sub_db, path)
+x <- raster::stack(files)
+```
+
+
+## TODO
 
 Navigating a stack (just simple - there are plenty of online tutorials)
 Extracting from a stack (just simple - there are plenty of online tutorials)... a point, a patch of points, a polygon

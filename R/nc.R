@@ -68,7 +68,21 @@ obpg_build_url <- function(dates = as.Date("2018-01-01"),
     ext = ".nc"
   }
 
-  if (period[1] != "DAY") warning("only period DAY has been tested")
+
+  if(FALSE){
+    # for development
+    dates = as.Date("2018-01-01")
+    lvl = "L3m"
+    param = "chlor_a"
+    suite = "CHL"
+    period = "MO"
+    res = "9km"
+    platform = "AQUA_MODIS"
+    baseuri = obpg_base_url(type = "opendap")
+    ext = ".nc"
+  }
+
+  #if (period[1] != "DAY") warning("only period DAY has been tested")
   if (platform[1] != "AQUA_MODIS") warning("only platform AQUA_MODIS has been tested")
   if (lvl[1] != "L3m") warning("only level 3 has been tested: ", lvl)
   if (!inherits(dates, "Date")) {

@@ -79,8 +79,7 @@ write_database <- function(x,
                           path = ".",
                           filename = "database.csv.gz"){
   fname <- file.path(path, filename)
-  if (!file.exists(fname)) stop("file not found:", fname)
-  suppressMessages(readr::read_csv(fname))
+  readr::write_csv(x, fname)
 }
 
 #' Read a database file stored as CSV (possible compressed)
