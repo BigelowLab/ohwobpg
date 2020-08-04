@@ -4,10 +4,10 @@
 \alias{read_database}
 \title{Read a database file stored as CSV (possible compressed)}
 \usage{
-read_database(x = ".", filename = "database.csv.gz")
+read_database(path, filename = "database.csv.gz")
 }
 \arguments{
-\item{x}{character, the path to the database, by default "."}
+\item{path}{character, the path to the database}
 
 \item{filename}{character, by default 'database.csv.gz' but it can be any other filename}
 }

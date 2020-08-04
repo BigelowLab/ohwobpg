@@ -55,8 +55,7 @@ do_fetch <- function(dates,
 }
 
 # define an output path
-#PATH <- "~/gom"
-PATH <- "/mnt/ecocast/corecode/R/ohwobpg/inst/gom"
+PATH <- "~/gom"
 ok <- dir.create(PATH, showWarnings = FALSE, recursive = TRUE)
 
 # and define our bounding box [west, east, south, north]

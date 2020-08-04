@@ -85,11 +85,11 @@ write_database <- function(x,
 #' Read a database file stored as CSV (possible compressed)
 #'
 #' @export
-#' @param x character, the path to the database, by default "."
+#' @param path character, the path to the database
 #' @param filename character, by default 'database.csv.gz' but it can be any other filename
-read_database <- function(x = ".",
+read_database <- function(path,
                           filename = "database.csv.gz"){
-  fname <- file.path(x, filename)
+  fname <- file.path(path[1], filename[1])
   if (!file.exists(fname)) stop("file not found:", fname)
   suppressMessages(readr::read_csv(fname))
 }
