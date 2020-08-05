@@ -28,7 +28,7 @@ library(ohwobpg)
 
 ## Initialize raster for visualization
 
-Once the necessary packages are loaded, we will start by creating a raster object from a pre-loaded ohwobpg database.  Specifically, we will be creating a raster object of sea surface temperature (SST) data for June of 2018.
+Once the necessary packages are loaded, we will start by creating a raster object from a pre-loaded ohwobpg database.  Specifically, we will be creating a raster object of sea surface temperature (SST) data for 2018.
 
 ```{r init_raster, message=FALSE, warning=FALSE}
 # Load database
@@ -93,7 +93,7 @@ Finally, we plot a time series of the buoy data and satellite data.  Both datase
 
 ```{r time_series, message=FALSE, warning=FALSE}
 # Format satellite data
-sat_df <- gather(as.data.frame(raster::extract(sat, buoy_loc)), month, value, Jun:Sep) %>%
+sat_df <- tidyr::gather(as.data.frame(raster::extract(sat, buoy_loc)), month, value, Jun:Sep) %>%
   dplyr::mutate(month_num = 6:9)
 
 # Format buoy data
