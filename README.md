@@ -2,9 +2,9 @@
 
 Ocean Color Processing Group (OPBG) serves satellite data via [OPeNDAP](https://www.opendap.org/).  This packages provides simple tools in [R language](https://www.r-project.org/) for downloading subsets of global data files, and proposes a simple method for storing and managing the datasets.
 
-This package is deminstrates working with [Level 3](https://oceancolor.gsfc.nasa.gov/products/) (simple global grids) specifically from the [AQUA_MODIS](https://oceancolor.gsfc.nasa.gov/data/aqua/) instrumentation.  The package may be adaptable for other products/instruments, but we haven't tried anything other than AQUA_MODIS Level 3 mapped images.
+This package is demonstrates working with [Level 3](https://oceancolor.gsfc.nasa.gov/products/) (simple global grids) specifically from the [AQUA_MODIS](https://oceancolor.gsfc.nasa.gov/data/aqua/) instrumentation.  The package may be adaptable for other products/instruments, but we haven't tried anything other than AQUA_MODIS Level 3 mapped images.
 
-OBPG managers are migrating from an old-style [naming convention](https://oceancolor.gsfc.nasa.gov/docs/filenaming-convention/) to a new-style. Currently, only recently reprocessed data (SST) are served in the new-style. That means this code attemtps to handle either convention seamlessly while navigating the system. Eventually, all products will be served in the new-style filenaming format, so we have kept that in mind when proposing a local storage and management system.
+OBPG managers are migrating from an old-style [naming convention](https://oceancolor.gsfc.nasa.gov/docs/filenaming-convention/) to a new-style. Currently, only recently reprocessed data (SST) are served in the new-style. That means this code attempts to handle either convention seamlessly while navigating the system. Eventually, all products will be served in the new-style filenaming format, so we have kept that in mind when proposing a local storage and management system.
 
 ## Requirements
 
@@ -34,7 +34,7 @@ remotes::install_github("BigelowLab/ohwobpg")
 
 ## Storing data
 
-OBPG data naturally organize under a simple heirarchy `<root>/region/yyyy/mmdd/files`. We find that allowing the end user to specify the `<root>/region` while autmatically enforcing the remainder `yyyy/mmdd/files` works really well. For example, suppose you are going to download daily SST and CHLOR_A from AQUA_MODIS covering the Gulf of Maine in 2018.  We suggest that you create the root path like the following shows - a simple directory in you home directory (but whatever works for you works for us.)
+OBPG data naturally organize under a simple heirarchy `<root>/region/yyyy/mmdd/files`. We find that allowing the end user to specify the `<root>/region` while automatically enforcing the remainder `yyyy/mmdd/files` works really well. For example, suppose you are going to download daily SST and CHLOR_A from AQUA_MODIS covering the Gulf of Maine in 2018.  We suggest that you create the root path like the following shows - a simple directory in you home directory (but whatever works for you works for us.)
 
 ```
 path <- "~/gom"
@@ -64,7 +64,7 @@ Any data you subsequently download using this package will automatically create 
 
 ## Downloading example
 
-Let's download 2018 monthly CHLOR_A data at 9km resoltion just for the Gulf of Maine region. First we build a series of URLs for the data using `obpg_build_url()`.  The function has a number of arguments, but we'll just focus on what we need and accept the default values for the others.  Complete documentation is available by typing at the console, `?obpg_build_url`.
+Let's download 2018 monthly CHLOR_A data at 9km resolution just for the Gulf of Maine region. First we build a series of URLs for the data using `obpg_build_url()`.  The function has a number of arguments, but we'll just focus on what we need and accept the default values for the others.  Complete documentation is available by typing at the console, `?obpg_build_url`.
 
 ```
 library(ohwobpg)
@@ -204,7 +204,7 @@ par_db <- db %>%
 # 4 2018-09-01  2018 0901  AQUA_MODIS L3m   MO    SST   sst   9km   NA    AQUA_MODIS.20180901_20180930.L3m.MO.SST.sst.9km
 ```
 
-Using the filtered database we then read in a subset of records into a raster stack of images.  By default each layer's name is assigned the filename from which it came, but that can make for really names.  We know that each layer is one month, so we will assign each a new name: "Jun", "Jul", "Aug", "Sep".  You can lean more about formatting dates here `?strftime`. The are many [raster tutorials](https://rseek.org/?q=raster+tutorial) available and a handy [cheatsheet](https://rpubs.com/etiennebr/visualraster).
+Using the filtered database we then read in a subset of records into a raster stack of images.  By default each layer's name is assigned the filename from which it came, but that can make for really long names.  We know that each layer is one month, so we will assign each a new name: "Jun", "Jul", "Aug", "Sep".  You can lean more about formatting dates here `?strftime`. The are many [raster tutorials](https://rseek.org/?q=raster+tutorial) available and a handy [cheatsheet](https://rpubs.com/etiennebr/visualraster).
 
 ```
 library(raster)
