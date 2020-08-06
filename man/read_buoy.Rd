@@ -4,14 +4,19 @@
 \alias{read_buoy}
 \title{Read in buoy data}
 \usage{
-read_buoy(buoy = "M01")
+read_buoy(buoy = c("I01", "M01")[1])
 }
 \arguments{
-\item{buoy}{the}
+\item{buoy}{the buoy to load - either "I01" or "M01"}
+}
+\value{
+a data frame (tibble) of buoy data
 }
 \description{
 Read in buoy data
 }
 \seealso{
-\href{http://gyre.umeoce.maine.edu/data/gomoos/buoy/html/M01.html}{UMaine Buoy Data}
+\href{http://gyre.umeoce.maine.edu/data/gomoos/buoy/html/M01.html}{UMaine Buoy M01 Data}
+
+\href{http://gyre.umeoce.maine.edu/data/gomoos/buoy/html/I01.html}{UMaine Buoy I01 Data}
 }
