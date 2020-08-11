@@ -19,7 +19,8 @@ library(leaflet)
 library(dplyr)
 library(remotes)
 # Install ohwobpg package
-remotes::install_github("BigelowLab/ohwobpg", quiet = TRUE)
+installed <- rownames(installed.packages())
+if (!("ohwobpg" %in% installed))  remotes::install_github("BigelowLab/ohwobpg", quiet = TRUE)
 # Load ohwobpg package
 library(ohwobpg)
 ```

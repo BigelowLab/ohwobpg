@@ -12,6 +12,9 @@ It is not uncommon to need to derive one set of rasters from another.  [Raster m
 Here we'll make a cumulative series of CHLOR_A values from our monthly 2018 dataset from the Gulf of Maine. There are a number of ways to do this, but we describe here a very simple approach. First we load packages from our library, then we load our database and filter it to just monthly CHLOR_A in 2018.
 
 ```{r}
+# Install ohwobpg package
+installed <- rownames(installed.packages())
+if (!("ohwobpg" %in% installed))  remotes::install_github("BigelowLab/ohwobpg", quiet = TRUE)
 library(ohwobpg)
 library(raster)
 library(dplyr, warn.conflicts = FALSE)
@@ -53,4 +56,3 @@ if ("rasterVis" %in% installed){
   plot(log10(chl), col = pal, breaks = breaks)
 }
 ```
-![Derived raster images using rasterVis::levelplot()](deriving_rasters.png)

@@ -7,6 +7,9 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+# Install ohwobpg package
+installed <- rownames(installed.packages())
+if (!("ohwobpg" %in% installed))  remotes::install_github("BigelowLab/ohwobpg", quiet = TRUE)
 ```
 # [OBPG](https://oceancolor.gsfc.nasa.gov/) for [Ocean Hack Week 2020](https://oceanhackweek.github.io/)
 

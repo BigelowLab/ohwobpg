@@ -21,7 +21,8 @@ library(dplyr)
 library(remotes)
 library(lubridate)
 # Install ohwobpg package
-remotes::install_github("BigelowLab/ohwobpg", force = TRUE, quiet = TRUE)
+installed <- rownames(installed.packages())
+if (!("ohwobpg" %in% installed))  remotes::install_github("BigelowLab/ohwobpg", quiet = TRUE)
 # Load ohwobpg package
 library(ohwobpg)
 ```
